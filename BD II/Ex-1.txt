@@ -1,0 +1,94 @@
+create table Professores (
+	Id int not null,
+	Nome varchar(50) not null,
+	Disciplina varchar(15) not null,
+
+	Constraint PK_Professores Primary Key(Id)
+);
+
+Insert into Professores
+values ('1', 'Ana Oliveira', 'Português');
+
+Update Professores
+set Nome = 'Ana Silva'
+where Id = 1;
+
+insert into Professores
+values ('2', 'Igor Rocha', 'Matemática'), ('3', 'Gustavo Oliveira', 'Geografia'), ('4', 'Carlos Henrique', 'História'), ('5', 'Maycon Moraes', 'Geografia'), ('6', 'Bale Rico', 'Português'), ('7', 'Lilian Santos' , 'Ciência'), ('8', 'Rogerio Firmino', 'Biologia'), ('9', 'Marcos Felipe', 'Física'), ('10', 'Diego Oliveira', 'Química'), ('11', 'Gabriela Fernanda', 'Português');
+
+Delete from Professores
+where Id = 2;
+
+create table Turmas (
+	Id int not null,
+	Nome varchar(50) not null,
+	Professor int not null,
+
+	Constraint PK_Turmas Primary Key(Id),
+	Constraint FK_Professores Foreign Key(Professor) references Professores(Id)
+);
+
+insert into Turmas
+values ('1', '9A', '1'), ('2', '9B', '11'), ('3', '9C', '5'), ('4','8A','8'), ('5','8B','10'), ('6','8C','6'), ('7','7A','4'), ('8','7B','3'), ('9','7C','9'), ('10','6A','10'), ('11', '6B', '1');
+
+Create Table Alunos (
+	Id int not null, 
+	Nome Varchar(50) not null,
+	DataNascimento date not null,
+	TurmaID int not null,
+
+	constraint PK_Alunos Primary Key(Id),
+	constraint FK_Turmas Foreign Key(TurmaID) references Turmas(Id)
+);
+
+insert into Alunos
+values ('1','Maria Souza', '2005-10-15', '1'), ('2','Ana Luiza', '2007-07-08', '4'), ('3','Danielle Silva', '2007-12-28', '5'), ('4','Isabelle Silva', '2005-12-26', '2'), ('5','Felipe Luiz', '2007-01-26', '6'), ('6','Evaldo Pacheco', '2006-02-14', '3'), ('7','William Santos', '2008-10-25', '7'), ('8','Gabriel Barbosa', '2008-01-30', '8'), ('9','Mario Souza', '2009-01-01', '9'), ('10','Enzo Beckher', '2010-10-15', '10'), ('11','Valentina Beckher', '2010-10-15', '11'); 
+
+Delete from Alunos
+where Id=2;
+
+create table Notas (
+	Id int not null,
+	AlunoID int  not null,
+	Disciplina varchar(15) not null,
+	Nota decimal(5,2),
+
+	constraint PK_Notas Primary Key(Id),
+	constraint FK_Alunos Foreign Key(AlunoID) references Alunos(Id)
+);
+
+
+insert into Notas
+Values ('1', '1', 'Matemática', '8.5'), ('2', '3', 'Português', '9.5'), ('3', '3', 'Geografia', '6.5'), ('4', '4', 'História', '7.0'), ('5', '5', 'Ciência', '5.0'), ('6', '6', 'Matemática', '4.5'), ('7', '7', 'Português', '9.5'), ('8', '8', 'História', '10.0'), ('9', '9', 'Matemática', '6.5'), ('10', '1', 'Português', '10.0'), ('11', '1', 'História', '9.0');
+
+Delete from Notas
+Where AlunoID = 1 and Disciplina = 'Matemática';
+
+Create Table Matriculas (
+	Id int not null,
+	AlunoID int not null,
+	TurmaID int not null,
+	DataMatricula date not null,
+
+	constraint PK_Matriculas Primary Key(Id),
+	constraint FK_AlunosMatricula Foreign Key(AlunoID) references Alunos(Id),
+	constraint FK_TurmasMatricula Foreign Key(TurmaID) references Turmas(Id)
+);
+
+insert into Matriculas 
+values ('1', '1', '1', '2022-02-15'),
+	   ('3', '3', '5', '2022-02-16'),
+	   ('4', '4', '2', '2022-02-16'),
+	   ('5', '5', '6', '2022-02-16'),
+	   ('6', '6', '3', '2022-02-20'),
+	   ('7', '7', '7', '2022-02-21'),
+	   ('8', '8', '8', '2022-02-22'),
+	   ('9', '9', '9', '2022-02-23'),
+	   ('10', '10', '10', '2022-02-23'),
+	   ('11', '11', '11', '2022-02-25');
+
+
+
+
+
+

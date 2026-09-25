@@ -1,0 +1,77 @@
+-- Selecionar dados distintintos detro de uma mesma coluna
+select distinct Salario from Empregado;
+
+-- Apelidar colundas
+select cod_cliente as 'Código do Cliente', nome_cliente as 'Nome do Cliente'
+from cliente
+
+-- Criar uma coluna apenas de visualização temporária com o  apelido colocado dentro da aspas simples
+Select 'Código do Cliente', cod_cliente, 'Nome do Cliente', nome_cliente 
+from cliente
+
+-- Utilizada para fazer simulações, cria uma coluna temporária apenas de visualização com o diferencial citado
+Select Nome, Salario, Salario+300 Aumento_Salario
+from Empregado
+
+-- Concatenção de Dados
+Select 'Funcionario: ' + Nome + '. Salário: ' + CONVERT(VARCHAR,Salario) as 'Concatenação das Colunas' , Nome, Salario
+from Empregado
+
+-- Lista o número pedido, o código do produto com quantidade = 45
+Select num_pedido, cod_produto, quantidade
+from item_pedido
+where quantidade = 45;
+
+-- Lista o número pedido, o código do produto com quantidade menor que 45
+Select num_pedido, cod_produto, quantidade
+from item_pedido
+where quantidade < 45;
+
+-- Lista os salário que estão entre os valores citados
+select Nome, Salario
+from Empregado
+where salario between 2000 and 3400;
+
+select cod_produto, descricao, Valor_unitario
+from produto
+where valor_unitario between 0.32 and 2.00;
+
+-- O like busca um dado de acordo com a palavra citada
+Select cod_produto, descricao, unidade
+from produto
+where unidade like 'K%'; *Começa com K
+where unidade like '%K'; *Termina com K
+where unidade like '%K%'; *Tem K em algum lugar
+
+-- Filtra de acordo com a condição dentro dos parenteses
+select nome_vendedor, faixa_comissao
+from vendedor
+where faixa_comissao in ('A','B');
+
+-- Filtra tudo que não está citado nos parenteses
+select nome_vendedor, faixa_comissao
+from vendedor
+where faixa_comissao not in ('A','B');
+
+- Mostrar os clientes que não tenham inscrição estadual
+select *
+from cliente
+where ie is null;
+
+-- Filtro com mais de uma condição
+select NrMatricula, Salario
+from Empregado
+where Salario > 3000 and NrMatricula >=3;
+
+select descricao
+from produto
+where unidade = 'M' and valor_unitario = 1.05;
+
+select descricao
+from produto
+where unidade = 'UN' and valor_unitario = 4;
+
+-- Filtra uma variedade de condições, porém é necessário que só uma seja verdadeira.
+select NrMatricula, Salario
+from Empregado
+where Salario > 3500 or NrMatricula >=3;

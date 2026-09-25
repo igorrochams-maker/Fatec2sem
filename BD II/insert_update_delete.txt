@@ -1,0 +1,24 @@
+insert into Estado
+values
+('SP', 'São Paulo');
+
+insert into cidade
+values
+('1','Votorantim','SP');
+
+insert into cidade (CodCidade, NomeCidade, CDestado)
+Values ('2', 'Sorocaba', 'SP');
+
+insert into Estado
+values ('NN', 'Não Cadastrado');
+
+insert into Cidade (CodCidade, NomeCidade, CDestado)
+values ('3','Itu','NN'), ('4','Itapira','NN');
+
+Update Cidade
+set CDestado = 'SP'
+where CDestado = 'NN';
+
+delete from Cidade
+where NomeCidade = 'Itapira';
+	

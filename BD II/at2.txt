@@ -1,0 +1,31 @@
+create database LISTA2teams;
+use LISTA2teams;
+
+-- 1
+create table Tbl_clientes(
+	Id int primary key,
+	Nome varchar(50)
+	Email varchar(100),
+	Telefone varchar(15)
+);
+
+-- 2 e 3
+insert into Tbl_clientes
+values (1, 'João Silva', 'joao@email.com', '(11) 1234-5678'), (2, 'Igor Rocha', 'igor@email.com', '(11) 9999-9999'), (3, 'Gabriela Fernanda', 'gabi@email.com', '(11) 9999-9998'), (4, 'Cintia Rocha', 'cintia@email.com', '(11) 9999-9988'), (5, 'Ronaldo Lopes', 'ronaldo@email.com', '(11) 9999-9888'), (6, 'Isabelle Rocha', 'isabelle@email.com', '(11) 9999-8888'), (7, 'Danielle Rocha', 'dani@email.com', '(11) 9998-8888'), (8, 'Gabriel Bontempo', 'bontempo@email.com', '(11) 9988-8888'), (9, 'Gabigol', 'gabigol@email.com', '(11) 9888-8888'), (10, 'Neymar Junior', 'neymar@email.com', '(11) 9911-1010'), (11, 'Rony', 'rony@email.com', '(11) 9111-1111');
+
+-- 4
+update Tbl_clientes
+set Telefone = '(11) 8765-4321'
+where Id = 1;
+
+-- 5
+create table Tbl_produto(
+	Id int primary key,
+	Nome varchar(50),
+	Preco decimal(5,2),
+	Estoque int
+);
+
+-- 6 e 7
+insert into Tbl_produto
+values (1, 'Camiseta', 29.99, 100), (2, 'Camisa', 49.99, 60), (3, 'Regata', 19.99, 130), (4, 'Blusa', 69.99, 40), (5, 'Jaqueta', 89.99, 50), (1, 'Camiseta', 29.99, 100), 
