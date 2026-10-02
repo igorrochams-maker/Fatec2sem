@@ -1,0 +1,6 @@
+Orientação ao objeto
+
+Abstração: Trazer as principais informações de um objeto da vida real para um sistema.
+
+Encapsulamento: 
+

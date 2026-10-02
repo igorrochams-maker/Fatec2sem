@@ -1,0 +1,39 @@
+function Head() {
+  return <header>Header</header>;
+}
+
+function Component() {
+  return <h1> Component </h1>;
+}
+
+function Footer() {
+  return <footer>Dashboard</footer>;
+}
+
+function Dashboard() {
+  return <h1>Dashboard</h1>;
+}
+
+function Login() {
+  return <h1> login</h1>;
+}
+
+const Authenticated = true;
+
+let Pages;
+if (Authenticated) {
+  Pages = <Dashboard />;
+} else {
+  Pages = <Login />;
+}
+
+export default function App() {
+  return (
+    <>
+      <Head />
+      <Component />
+      {Pages}
+      <Footer />
+    </>
+  );
+}
