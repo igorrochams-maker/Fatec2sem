@@ -33,12 +33,13 @@ public class ListaDuplamenteEncadeada {
         //Adiciona um novo nó na posição definida por índice
         
         // Validando índice
-        if (indice < 0 || indice > qtdNo){
+        if (indice < 0 || indice > qtdNo) {
             System.out.println("Índice inválido!");
+            return;
         }
-        
-        // Reaproveitando função do tail
-        if (indice == qtdNo){
+
+        // Adicionando no final
+        if (indice == qtdNo) {
             adicionar(info);
             return;
         }
@@ -68,6 +69,7 @@ public class ListaDuplamenteEncadeada {
         // Validando índice
         if (indice < 0 || indice > qtdNo){
             System.out.println("Índice inválido!");
+            return;
         }
         
         NoDuplo noRemover = getNo(indice);
@@ -96,8 +98,7 @@ public class ListaDuplamenteEncadeada {
         qtdNo--;
     }
     private NoDuplo getNo(int indice){
-        //Retorna o nó corresponte ao índice
-        return new NoDuplo("a");
+        return percorrerLista(indice);
     }
     public Object getInfo(int indice){
         //Retorna a informação do nó corresponte ao índice
@@ -129,22 +130,49 @@ public class ListaDuplamenteEncadeada {
         return qtdNo;
     }
     public static void main(String[] args) {
-        
-        
-        /*int[] vetor = new int[1000];
-        
-        for(int i=0; i<vetor.length;i++){
-            //Gera 1000 valores randomicos
-            vetor[i] = (int) (Math.random() * 1000);
-            System.out.println(vetor[i] + " ");
+        ListaDuplamenteEncadeada lista = new ListaDuplamenteEncadeada();
+
+        // Adicionando elementos no final da lista
+        lista.adicionar("João");
+        lista.adicionar("Maria");
+        lista.adicionar("Pedro");
+
+        System.out.println("Tamanho da lista: " + lista.tamanho());
+
+        // Mostrando os elementos
+        System.out.println("Elemento índice 0: " + lista.getInfo(0));
+        System.out.println("Elemento índice 1: " + lista.getInfo(1));
+        System.out.println("Elemento índice 2: " + lista.getInfo(2));
+
+        // Adicionando elemento em uma posição específica
+        lista.adicionar("Carlos", 1);
+
+        System.out.println("\nDepois de adicionar Carlos no índice 1:");
+
+        for (int i = 0; i < lista.tamanho(); i++) {
+            System.out.println("Índice " + i + ": " + lista.getInfo(i));
         }
-        
-        int [] vetorOrdenado = Ordenacao.OrdenacaoTrocaCrescente();
-        
-        for(int i=0;i<vetorOrdenado.length;i++){            
-            System.out.print(vetor[i]+" ");
+
+        // Alterando um elemento
+        lista.setInfo(2, "José");
+
+        System.out.println("\nDepois de alterar o índice 2:");
+
+        for (int i = 0; i < lista.tamanho(); i++) {
+            System.out.println("Índice " + i + ": " + lista.getInfo(i));
         }
-        */
+
+        // Removendo um elemento
+        lista.remover(1);
+
+        System.out.println("\nDepois de remover o índice 1:");
+
+        for (int i = 0; i < lista.tamanho(); i++) {
+            System.out.println("Índice " + i + ": " + lista.getInfo(i));
+        }
+
+        System.out.println("\nTamanho final: " + lista.tamanho());
+       
     }
     
 }
