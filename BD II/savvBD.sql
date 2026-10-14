@@ -1,4 +1,4 @@
-CREATE DATABASE SAVV_BD;
+CREATE DATABASE savv_bd;
 use savv_bd;
 
 create table usuario (
